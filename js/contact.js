@@ -1,4 +1,3 @@
-
 document
     .getElementById("contact-form")
     .addEventListener("submit", function (event) {
@@ -6,10 +5,11 @@ document
 
         // Collect form data
         const formData = new FormData(event.target);
-        const data = {};
-        formData.forEach((value, key) => {
-            data[key] = value;
-        });
+        const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            message: formData.get('message')
+        };
 
         // Send form data to the server
         fetch("http://localhost:3000/send-email", {
